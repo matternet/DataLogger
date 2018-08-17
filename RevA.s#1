@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.0">
+<eagle version="9.1.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -8535,7 +8535,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <label x="457.2" y="172.72" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="COIN" class="0">
+<net name="VCR" class="0">
 <segment>
 <pinref part="B1" gate="G$1" pin="+"/>
 <wire x1="307.34" y1="30.48" x2="307.34" y2="25.4" width="0.1524" layer="91"/>
