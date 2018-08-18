@@ -7392,6 +7392,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="+3V17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13" package3d_urn="urn:adsk.eagle:package:27946/1"/>
+<part name="C21" library="microbuilder" deviceset="CAP_CERAMIC" device="0805-NOOUTLINE" value="10µF"/>
+<part name="U$2" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7529,6 +7531,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="+3V17" gate="G$1" x="416.56" y="142.24"/>
 <instance part="GND13" gate="1" x="416.56" y="129.54"/>
 <instance part="TP1" gate="G$1" x="284.48" y="220.98"/>
+<instance part="C21" gate="G$1" x="142.24" y="30.48"/>
+<instance part="U$2" gate="G$1" x="142.24" y="40.64" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -7721,6 +7725,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <pinref part="C20" gate="G$1" pin="2"/>
 <pinref part="GND13" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C21" gate="G$1" pin="1"/>
+<pinref part="U$2" gate="G$1" pin="GND"/>
+<wire x1="142.24" y1="38.1" x2="142.24" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CS-1" class="0">
@@ -7981,12 +7990,16 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="U3" gate="G$1" pin="VDD"/>
 <wire x1="121.92" y1="33.02" x2="121.92" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="25.4" x2="129.54" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="25.4" x2="157.48" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="25.4" x2="142.24" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="CHG" gate="G$1" pin="A"/>
+<wire x1="142.24" y1="25.4" x2="157.48" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="20.32" x2="129.54" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="20.32" x2="129.54" y2="25.4" width="0.1524" layer="91"/>
 <junction x="129.54" y="25.4"/>
 <pinref part="U$38" gate="G$1" pin="VBUS"/>
+<pinref part="C21" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="27.94" x2="142.24" y2="25.4" width="0.1524" layer="91"/>
+<junction x="142.24" y="25.4"/>
 </segment>
 <segment>
 <wire x1="363.22" y1="215.9" x2="365.76" y2="215.9" width="0.1524" layer="91"/>

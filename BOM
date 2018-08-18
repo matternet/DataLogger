@@ -1,0 +1,72 @@
+Partlist
+
+Exported from RevA.brd at 8/17/18 5:16 PM
+
+EAGLE Version 9.1.3 Copyright (c) 1988-2018 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value             Package                Library      Position (mm)         Orientation
+
+B1       CR1220            CR1220                 microbuilder (53.61 6.7)           R180
+C1       10uF              C0805K                 adafruit     (17.5 31.5)           R180
+C2       10uF              C0805K                 adafruit     (17.5 22.5)           R180
+C3       0.01µF            _0805                  microbuilder (16.5 35.8)           R270
+C4       0.01µF            _0805                  microbuilder (16.5 27)             R270
+C5       0.01µF            _0805                  microbuilder (16.5 18)             R270
+C6       0.01µF            _0805                  microbuilder (16.5 9)              R270
+C7       10µF              0805-NO                microbuilder (26 42.5)             R180
+C8       10uF              C0805K                 adafruit     (17.5 13.5)           R180
+C9       10uF              C0805K                 adafruit     (17.5 4.5)            R180
+C10      1uF               0603-NO                microbuilder (43.5 25.5)           R270
+C11      1uF               0603-NO                microbuilder (72.4 20.4)           R270
+C12      1uF               0603-NO                microbuilder (68.4 15)             R270
+C13      10µF              0805-NO                microbuilder (80.7 22.5)           R90
+C14      1uF               0603-NO                microbuilder (82.8 30.5)           R90
+C15      10µF              0805-NO                microbuilder (82.5 35.95)          R90
+C16      1uF               0603-NO                microbuilder (72.25 24.95)         R270
+C17      10µF              0805-NO                microbuilder (72.5 9.44)           R270
+C18      10uF              0805-NO                microbuilder (59 40.15)            R90
+C19      1uF               0805-NO                microbuilder (33.5 18.62)          R90
+C20      1uF               0603-NO                microbuilder (73.9 28.05)          R270
+C21      10µF              0805-NO                microbuilder (73.5 42)             R270
+CHG      ORANGE            CHIPLED_0805_NOOUTLINE microbuilder (78.4 40)             R180
+D9       MBR120            SOD-123                microbuilder (82.8 19.7)           R270
+FB1      Ferrite           _0805                  microbuilder (11.5 37.5)           R0
+FB2      Ferrite           _0805                  microbuilder (11.5 34)             R0
+FB3      Ferrite           _0805                  microbuilder (11.5 28.7)           R0
+FB4      Ferrite           _0805                  microbuilder (11.5 25.2)           R0
+FB5      Ferrite           _0805                  microbuilder (11.5 19.7)           R0
+FB6      Ferrite           _0805                  microbuilder (11.5 16.2)           R0
+FB7      Ferrite           _0805                  microbuilder (11.5 10.7)           R0
+FB8      Ferrite           _0805                  microbuilder (11.5 7.2)            R0
+IC1      MAX31855          SO08                   adafruit     (23.5 35.85)          R270
+IC3      MAX31855          SO08                   adafruit     (23.5 27)             R270
+IC4      MAX31855          SO08                   adafruit     (23.5 18)             R270
+IC5      MAX31855          SO08                   adafruit     (23.5 9)              R270
+IC9      ATMEGA32U4-AU     TQFP44                 microbuilder (64.4 24.9)           R270
+IC10     DS3231/SO         SO16W                  adafruit     (41.1 16.39)          R270
+ISP1     AVRISP-BOX        AVRISP-BOX             adafruit     (51.0296 36.664)      R0
+J1       1X2-3.5MM         1X2-3.5MM              adafruit     (4 35.8)              R270
+J2       1X2-3.5MM         1X2-3.5MM              adafruit     (4 27)                R270
+J3       1X2-3.5MM         1X2-3.5MM              adafruit     (4 18)                R270
+J4       1X2-3.5MM         1X2-3.5MM              adafruit     (4 9)                 R270
+J5       503182-1852       MOLEX_503182-1852      503182-1852  (38.1448 35)          R0
+L        RED               CHIPLED_0805_NOOUTLINE microbuilder (78 2)                R270
+L1       GREEN             CHIPLED_0805_NOOUTLINE microbuilder (70.25 2)             R90
+R10      1K                0603-NO                microbuilder (78.5 36.3)           R270
+R11      10K\              0603-NO                microbuilder (73.15 33.25)         R270
+R12      100k              _0603MP                microbuilder (65.2 12.5)           R90
+R13      100K              _0603MP                microbuilder (67 9.67)             R270
+R14      1K                0603-NO                microbuilder (66.5 2)              R180
+R15      22                0603-NO                microbuilder (67.5 35.5)           R270
+R16      22                0603-NO                microbuilder (65.5 35.5)           R270
+R17      2.2K              0603-NO                microbuilder (74.3 2)              R0
+R18      10K               0805-NO                microbuilder (48.5 21.8)           R270
+R19      10K               0805-NO                microbuilder (51.5 20.5)           R270
+TP1      TPPAD1-13         P1-13                  testpad      (38.5 26)             R0
+U2       SPX3819-3.3       SOT23-5                microbuilder (81.5 26.75)          R270
+U3       MCP73831T-2ACI/OT SOT23-5                microbuilder (74.45 36.75)         R90
+X1       JSTPH             JSTPH2                 microbuilder (81.25 11.38)         R270
+X3       microUSB          4UCONN_20329_V2        microbuilder (66.15 40.22)         R180
+Y1       8MHz              RESONATOR-SMD          SparkFun     (46.65 25.5)          R90
