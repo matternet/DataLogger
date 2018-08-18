@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.0">
+<eagle version="9.1.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -7933,6 +7933,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="40.64" y1="187.96" x2="40.64" y2="182.88" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="T-"/>
 <wire x1="40.64" y1="182.88" x2="48.26" y2="182.88" width="0.1524" layer="91"/>
+<junction x="30.48" y="187.96"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -8380,6 +8381,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="IC10" gate="G$1" pin="/RST"/>
 <wire x1="248.92" y1="27.94" x2="264.16" y2="27.94" width="0.1524" layer="91"/>
 <label x="248.92" y="27.94" size="1.27" layer="95" rot="R180" xref="yes"/>
+<junction x="264.16" y="27.94"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -8401,6 +8403,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="40.64" y1="137.16" x2="40.64" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="IC3" gate="G$1" pin="T-"/>
 <wire x1="40.64" y1="132.08" x2="48.26" y2="132.08" width="0.1524" layer="91"/>
+<junction x="30.48" y="137.16"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -8444,6 +8447,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="38.1" y1="83.82" x2="38.1" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="IC4" gate="G$1" pin="T-"/>
 <wire x1="38.1" y1="78.74" x2="45.72" y2="78.74" width="0.1524" layer="91"/>
+<junction x="27.94" y="83.82"/>
 </segment>
 </net>
 <net name="N$11" class="0">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.2">
+<eagle version="9.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -7300,7 +7300,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="X1" library="microbuilder" deviceset="CON_JST_PH_2PIN" device="" value="JSTPH"/>
 <part name="U$18" library="microbuilder" deviceset="VBAT" device=""/>
 <part name="U$22" library="microbuilder" deviceset="GND" device=""/>
-<part name="R9" library="microbuilder" deviceset="RESISTOR" device="_0603_NOOUT" value="100k"/>
 <part name="U3" library="microbuilder" deviceset="MCP73831/2" device="" value="MCP73831T-2ACI/OT"/>
 <part name="CHG" library="microbuilder" deviceset="LED" device="0805_NOOUTLINE" value="ORANGE"/>
 <part name="R10" library="microbuilder" deviceset="RESISTOR" device="_0603_NOOUT" value="1K"/>
@@ -7438,7 +7437,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="X1" gate="G$1" x="187.96" y="76.2" rot="R180"/>
 <instance part="U$18" gate="G$1" x="190.5" y="86.36"/>
 <instance part="U$22" gate="G$1" x="190.5" y="63.5"/>
-<instance part="R9" gate="G$1" x="137.16" y="81.28"/>
 <instance part="U3" gate="G$1" x="170.18" y="22.86"/>
 <instance part="CHG" gate="G$1" x="137.16" y="20.32"/>
 <instance part="R10" gate="G$1" x="147.32" y="20.32"/>
@@ -7975,7 +7973,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="U2" gate="G$1" pin="IN"/>
 <pinref part="D9" gate="G$1" pin="C"/>
 <wire x1="124.46" y1="83.82" x2="132.08" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="R9" gate="G$1" pin="1"/>
+<pinref part="U2" gate="G$1" pin="EN"/>
+<wire x1="144.78" y1="81.28" x2="132.08" y2="81.28" width="0.1524" layer="91"/>
 <junction x="132.08" y="81.28"/>
 </segment>
 <segment>
@@ -8026,23 +8025,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <segment>
 <pinref part="R12" gate="G$1" pin="1"/>
 <pinref part="U$19" gate="G$1" pin="VBAT"/>
-</segment>
-<segment>
-<pinref part="B1" gate="G$1" pin="+"/>
-<wire x1="307.34" y1="30.48" x2="307.34" y2="25.4" width="0.1524" layer="91"/>
-<pinref part="IC10" gate="G$1" pin="VBAT"/>
-<wire x1="294.64" y1="30.48" x2="307.34" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="307.34" y1="30.48" x2="314.96" y2="30.48" width="0.1524" layer="91"/>
-<junction x="307.34" y="30.48"/>
-<label x="314.96" y="30.48" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="EN" class="0">
-<segment>
-<pinref part="U2" gate="G$1" pin="EN"/>
-<pinref part="R9" gate="G$1" pin="2"/>
-<wire x1="142.24" y1="81.28" x2="144.78" y2="81.28" width="0.1524" layer="91"/>
-<label x="142.24" y="81.28" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="9" class="0">
@@ -8551,6 +8533,14 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="IC9" gate="G$1" pin="PD4(ICP1/ADC8)"/>
 <wire x1="441.96" y1="172.72" x2="457.2" y2="172.72" width="0.1524" layer="91"/>
 <label x="457.2" y="172.72" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="COIN" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="+"/>
+<wire x1="307.34" y1="30.48" x2="307.34" y2="25.4" width="0.1524" layer="91"/>
+<pinref part="IC10" gate="G$1" pin="VBAT"/>
+<wire x1="294.64" y1="30.48" x2="307.34" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
