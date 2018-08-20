@@ -167,6 +167,7 @@
 <hole x="83" y="2.5" drill="2.5"/>
 <hole x="2.5" y="42" drill="2.5"/>
 <text x="24.5" y="1.5" size="1.778" layer="29" font="vector" ratio="12">Colossus Rev A</text>
+<text x="73.875" y="8.375" size="2" layer="25">+</text>
 </plain>
 <libraries>
 <library name="microbuilder">
