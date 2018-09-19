@@ -1379,6 +1379,9 @@ design rules under a new name.</description>
 <via x="67.25" y="3.75" extent="1-16" drill="0.35"/>
 <via x="49.5" y="42.125" extent="1-16" drill="0.35"/>
 <via x="79.375" y="24.875" extent="1-16" drill="0.35"/>
+<via x="73.25" y="14.875" extent="1-16" drill="0.35"/>
+<via x="70" y="36.625" extent="1-16" drill="0.35"/>
+<via x="45.25" y="9.75" extent="1-16" drill="0.35"/>
 </signal>
 <signal name="CS-1">
 <contactref element="IC1" pad="6"/>
