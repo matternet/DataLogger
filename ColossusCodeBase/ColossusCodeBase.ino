@@ -7,9 +7,12 @@
 
 #include <Wire.h>
 #include <SPI.h>
-#include "RTClib.h"
+//#include "RTClib.h"
+#include <DS3231.h>
 #include <SD.h>
 #include "Adafruit_MAX31855.h"
+
+//SPCR = (1<<SPE)|(1<<MSTR)|(1<<CPHA);
 
 #define VBATPIN 9
 #define MAXCS1 0
@@ -21,7 +24,7 @@ Adafruit_MAX31855 thermocouple1(MAXCS1);
 Adafruit_MAX31855 thermocouple2(MAXCS2);
 Adafruit_MAX31855 thermocouple3(MAXCS3);
 Adafruit_MAX31855 thermocouple4(MAXCS4);
-RTC_DS3231 rtc;
+DS3231 rtc;
 const int chipSelect = 11;
 double temp1, temp2, temp3, temp4;
 //char filename[] = "YYYYMMDD_HHMM_XX.CSV"; Placeholder for filename convention
@@ -46,24 +49,18 @@ void error(uint8_t errno) {
 void InitRTC() {
     // setup for the RTC
   
-  if (!rtc.IsActive) {
+  if (!rtc.getYear() >= 2018) {
     Serial.print("RTC not active.....");
     Serial.println("Beginning Initiliazation sequence");
-    rtc.begin();
-    if (! rtc.begin()) {
-      Serial.println("Couldn't Init RTC");
-      error(2);
-      while(1); //do nothing
+    rtc.setSecond(0);
+    rtc.setMinute(0);
+    rtc.setHour(0);
+    rtc.setDoW(2);
+    rtc.setDate(1);
+    rtc.setMonth(1);
+    rtc.setYear(18);
+    rtc.setClockMode(false);
     }
-    else {
-      rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-      Serial.print("RTC initialized and set to compile time");
-    }
-  }
-  else {
-    Serial.print("RTC Active and running and the current date and time are -");
-    Serial.println(rtc.now());
-  }
 }
 
 void InitSDCard() {
@@ -120,6 +117,8 @@ void loop() {
   temp3 = thermocouple3.readCelsius();
   temp4 = thermocouple4.readCelsius();
 
+  
+
   logfile.print("TC1 = ");
   logfile.println(temp1);
   logfile.print("TC2 = ");
@@ -128,11 +127,13 @@ void loop() {
   logfile.println(temp3);
   logfile.print("TC4 = ");
   logfile.println(temp4);
-  logfile.close();
+  logfile.flush();
   Serial.print(temp1);
+  Serial.println(" ");
   Serial.print(temp2);
+  Serial.println(" ");
   Serial.print(temp3);
+  Serial.println(" ");
   Serial.print(temp4);
+  Serial.println(" ");
   }
-}
-
