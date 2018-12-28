@@ -7,7 +7,6 @@
 
 #include <Wire.h>
 #include <SPI.h>
-//#include "RTClib.h"
 #include <DS3231.h>
 #include <SD.h>
 #include "Adafruit_MAX31855.h"
@@ -24,10 +23,12 @@ Adafruit_MAX31855 thermocouple1(MAXCS1);
 Adafruit_MAX31855 thermocouple2(MAXCS2);
 Adafruit_MAX31855 thermocouple3(MAXCS3);
 Adafruit_MAX31855 thermocouple4(MAXCS4);
-DS3231 rtc;
+DS3231 RTC;
+DateTime now;
+char filename[8 + 1 + 3 + 1];
+char datetime[2 + 1 + 2 + 1 + 4 + 3 + 2 + 1 + 2 + 1 + 2 + 1];
 const int chipSelect = 11;
 double temp1, temp2, temp3, temp4;
-//char filename[] = "YYYYMMDD_HHMM_XX.CSV"; Placeholder for filename convention
 File logfile;
 
 // error handling using LED
@@ -46,21 +47,39 @@ void error(uint8_t errno) {
   }
 }
 
+void gentime()
+{
+  int idx;
+  now = RTClib::now();
+  idx = sprintf(datetime, "%02u/%02u/%04u , ", now.month(), now.day(), now.year());
+  sprintf(&datetime[idx], "%02u:%02u:%02u", now.hour(), now.minute(), now.second());
+}
+
 void InitRTC() {
     // setup for the RTC
-  
-  if (!rtc.getYear() >= 2018) {
+  now = RTClib::now();
+  if (now.year() < 2018 || now.year() > 2100 || RTC.oscillatorCheck() == false) {
     Serial.print("RTC not active.....");
     Serial.println("Beginning Initiliazation sequence");
-    rtc.setSecond(0);
-    rtc.setMinute(0);
-    rtc.setHour(0);
-    rtc.setDoW(2);
-    rtc.setDate(1);
-    rtc.setMonth(1);
-    rtc.setYear(18);
-    rtc.setClockMode(false);
+    while (RTC.oscillatorCheck() == false) {
+      RTC.enableOscillator(true, true, 0);
+      RTC.setSecond(0);
+      RTC.setMinute(0);
+      RTC.setHour(0);
+      RTC.setDoW(2);
+      RTC.setDate(1);
+      RTC.setMonth(1);
+      RTC.setYear(18);
+      RTC.setClockMode(false);
     }
+    Serial.println("Oscillator Started");
+    }
+   else {
+    Serial.print("RTC Active and Running");    
+  }
+  Serial.println("The current time is....");
+  gentime();
+  Serial.println(datetime);
 }
 
 void InitSDCard() {
@@ -70,11 +89,12 @@ void InitSDCard() {
   // see if the card is present and can be initialized:
   if (!SD.begin(chipSelect)) {
     Serial.println("Card failed, or not present");
-    error(2);
+    //error(2);
     // don't do anything more:
-    while (1);
+    //while (1);
   }
-  Serial.println("SD card initialized.");
+  else
+    Serial.println("SD card initialized.");
 }
 
 void MeasureBattVoltage() {
@@ -94,19 +114,63 @@ void MeasureBattVoltage() {
   }
 }
 
+bool genfilename() {
+  int i;
+    for (i = 1; i < 1000; i++)
+    {
+        sprintf(filename, "%08u.csv", i);
+        if (SD.exists(filename) == false) {
+          return true; 
+        }
+    }
+    return false;
+ }
 
 
 void setup() {
+  Wire.begin();
   // Open serial communications and wait for port to open:
   Serial.begin(9600);
   while (!Serial) delay(1); {
     ; // wait for serial port to connect. Needed for native USB port only
   }
+
   InitSDCard();
   InitRTC();
-  File logfile = SD.open("Example01.CSV", FILE_WRITE);
-}
 
+
+  if (genfilename() == false) {}  
+  
+  logfile = SD.open(filename, FILE_WRITE);  
+  if (!logfile) {
+    error(2);
+    while(1){
+      Serial.print("File can not be opened for writing...Terminating");
+      delay(1000);
+    }
+  }
+  else {
+    Serial.print("File opened for writing...Beginning logging data");
+    digitalWrite(8, HIGH);
+    delay(100);
+    digitalWrite(8, LOW);
+    delay(100);
+  }
+  Serial.println(filename);
+  logfile.print(F("Date"));
+  logfile.print(F(","));
+  logfile.print(F("Time"));
+  logfile.print(F(","));
+  logfile.print(F("TC1"));
+  logfile.print(F(","));
+  logfile.print(F("TC2"));
+  logfile.print(F(","));
+  logfile.print(F("TC3"));
+  logfile.print(F(","));
+  logfile.print(F("TC4"));
+  logfile.print(F(","));
+  logfile.flush();
+}
 void loop() {
 
   MeasureBattVoltage();
@@ -117,16 +181,19 @@ void loop() {
   temp3 = thermocouple3.readCelsius();
   temp4 = thermocouple4.readCelsius();
 
-  
+  now = RTClib::now();
 
-  logfile.print("TC1 = ");
-  logfile.println(temp1);
-  logfile.print("TC2 = ");
-  logfile.println(temp2);
-  logfile.print("TC3 = ");
-  logfile.println(temp3);
-  logfile.print("TC4 = ");
-  logfile.println(temp4);
+  logfile.println();
+  gentime();
+  logfile.print(datetime);
+  logfile.print(F(","));
+  logfile.print(temp1);
+  logfile.print(F(","));
+  logfile.print(temp2);
+  logfile.print(F(","));
+  logfile.print(temp3);
+  logfile.print(F(","));
+  logfile.print(temp4);
   logfile.flush();
   Serial.print(temp1);
   Serial.println(" ");
